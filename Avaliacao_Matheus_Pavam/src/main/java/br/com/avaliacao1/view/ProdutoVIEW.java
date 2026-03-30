@@ -59,7 +59,7 @@ public class ProdutoVIEW extends javax.swing.JInternalFrame {
         nome_prod.setText("");
         desc_max_prod.setText("");
         preco_custo_prod.setText("");
-        preco_custo_prod.setText("");
+        preco_venda_prod.setText("");
         marca_prod.setText("");
         estoque_prod.setText("");
         validade_prod.setText("");
@@ -119,8 +119,8 @@ public class ProdutoVIEW extends javax.swing.JInternalFrame {
         btnSalvar = new javax.swing.JButton();
         pnlBusca = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        pesquisa_nome = new javax.swing.JTextField();
+        btnPesquisar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtl_consultar_produto = new javax.swing.JTable();
         pnlDados = new javax.swing.JPanel();
@@ -155,32 +155,58 @@ public class ProdutoVIEW extends javax.swing.JInternalFrame {
         pnlGeral.setForeground(new java.awt.Color(0, 0, 0));
         pnlGeral.setLayout(new java.awt.BorderLayout());
 
-        pnlBotoes.setBackground(new java.awt.Color(153, 153, 153));
+        pnlBotoes.setBackground(new java.awt.Color(0, 0, 153));
+        pnlBotoes.setForeground(new java.awt.Color(255, 255, 255));
 
+        btnCancelar.setBackground(new java.awt.Color(102, 102, 102));
+        btnCancelar.setFont(new java.awt.Font("Liberation Sans", 1, 14)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelar.setText("Cancelar");
+        btnCancelar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
             }
         });
 
+        btnNovo.setBackground(new java.awt.Color(255, 255, 255));
+        btnNovo.setFont(new java.awt.Font("Liberation Sans", 1, 14)); // NOI18N
+        btnNovo.setForeground(new java.awt.Color(0, 0, 0));
         btnNovo.setText("Novo");
+        btnNovo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNovoActionPerformed(evt);
             }
         });
 
+        btnSair.setBackground(new java.awt.Color(204, 0, 0));
+        btnSair.setFont(new java.awt.Font("Liberation Sans", 1, 14)); // NOI18N
+        btnSair.setForeground(new java.awt.Color(0, 0, 0));
         btnSair.setText("Sair");
+        btnSair.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSairActionPerformed(evt);
             }
         });
 
+        btnExcluir.setBackground(new java.awt.Color(255, 51, 51));
+        btnExcluir.setFont(new java.awt.Font("Liberation Sans", 1, 14)); // NOI18N
+        btnExcluir.setForeground(new java.awt.Color(0, 0, 0));
         btnExcluir.setText("Excluir");
+        btnExcluir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
+        btnSalvar.setBackground(new java.awt.Color(0, 153, 0));
+        btnSalvar.setFont(new java.awt.Font("Liberation Sans", 1, 14)); // NOI18N
+        btnSalvar.setForeground(new java.awt.Color(0, 0, 0));
         btnSalvar.setText("Salvar");
+        btnSalvar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
@@ -192,17 +218,17 @@ public class ProdutoVIEW extends javax.swing.JInternalFrame {
         pnlBotoesLayout.setHorizontalGroup(
             pnlBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBotoesLayout.createSequentialGroup()
-                .addContainerGap(137, Short.MAX_VALUE)
+                .addContainerGap(131, Short.MAX_VALUE)
                 .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(196, 196, 196))
+                .addGap(190, 190, 190))
         );
         pnlBotoesLayout.setVerticalGroup(
             pnlBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,25 +245,50 @@ public class ProdutoVIEW extends javax.swing.JInternalFrame {
 
         pnlGeral.add(pnlBotoes, java.awt.BorderLayout.PAGE_END);
 
-        pnlBusca.setBackground(new java.awt.Color(255, 255, 255));
+        pnlBusca.setBackground(new java.awt.Color(0, 0, 153));
+        pnlBusca.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("MathJax_Main", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Pesquisa:");
 
-        jButton1.setText("OK");
+        btnPesquisar.setBackground(new java.awt.Color(153, 255, 255));
+        btnPesquisar.setFont(new java.awt.Font("Liberation Sans", 1, 14)); // NOI18N
+        btnPesquisar.setForeground(new java.awt.Color(0, 0, 0));
+        btnPesquisar.setText("OK");
+        btnPesquisar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
 
+        jtl_consultar_produto.setBackground(new java.awt.Color(255, 255, 255));
+        jtl_consultar_produto.setFont(new java.awt.Font("Liberation Sans", 1, 12)); // NOI18N
+        jtl_consultar_produto.setForeground(new java.awt.Color(0, 0, 0));
         jtl_consultar_produto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID produto", "NOME"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jtl_consultar_produto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtl_consultar_produtoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtl_consultar_produto);
 
         javax.swing.GroupLayout pnlBuscaLayout = new javax.swing.GroupLayout(pnlBusca);
@@ -248,12 +299,12 @@ public class ProdutoVIEW extends javax.swing.JInternalFrame {
                 .addGap(73, 73, 73)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pesquisa_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+                .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85))
         );
         pnlBuscaLayout.setVerticalGroup(
             pnlBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,8 +312,8 @@ public class ProdutoVIEW extends javax.swing.JInternalFrame {
                 .addGap(37, 37, 37)
                 .addGroup(pnlBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(pesquisa_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBuscaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -272,7 +323,7 @@ public class ProdutoVIEW extends javax.swing.JInternalFrame {
 
         pnlGeral.add(pnlBusca, java.awt.BorderLayout.PAGE_START);
 
-        pnlDados.setBackground(new java.awt.Color(0, 0, 102));
+        pnlDados.setBackground(new java.awt.Color(0, 0, 153));
         pnlDados.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Informações do produto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("DejaVu Math TeX Gyre", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
         pnlDados.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -461,7 +512,7 @@ public class ProdutoVIEW extends javax.swing.JInternalFrame {
             gravar();
             gravar_alterar = 0;
         } else if (gravar_alterar == 2) { // Modo de alteracao
-            // Implementaremos o metodo alterar() na proxima etapa
+            alterar(); // CHAMADA ADICIONADA
         } else {
             JOptionPane.showMessageDialog(null, "ERRO NO SISTEMA !!!");
         }
@@ -495,18 +546,110 @@ public class ProdutoVIEW extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnSairActionPerformed
 
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        preencherTabela(pesquisa_nome.getText());
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void jtl_consultar_produtoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtl_consultar_produtoMouseClicked
+        preencheCampos(Integer.parseInt(String.valueOf(
+                jtl_consultar_produto.getValueAt(jtl_consultar_produto.getSelectedRow(), 0))));
+        liberarBotoes(false, true, true, true, true);
+    }//GEN-LAST:event_jtl_consultar_produtoMouseClicked
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        excluir();
+        limpaCampos();
+        liberarCampos(false);
+        liberarBotoes(true, false, false, false, true);
+        modelo_jtl_consultar_produto.setNumRows(0);
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void preencherTabela(String nome_prod) {
+        try {
+            modelo_jtl_consultar_produto.setNumRows(0);
+            produtoDTO.setNome_prod(nome_prod);
+            rs = produtoCTR.consultarProduto(produtoDTO, 1);
+            while (rs.next()) {
+                modelo_jtl_consultar_produto.addRow(new Object[]{
+                    rs.getString("id_prod"),
+                    rs.getString("nome_prod")
+                });
+            }
+        } catch (Exception e) {
+            System.out.println("Erro SQL: " + e);
+        } finally {
+            produtoCTR.CloseDB();
+        }
+    }
+
+    private void preencheCampos(int id_prod) {
+        try {
+            produtoDTO.setId_prod(id_prod);
+            rs = produtoCTR.consultarProduto(produtoDTO, 2);
+            if (rs.next()) {
+                limpaCampos();
+                nome_prod.setText(rs.getString("nome_prod"));
+                desc_max_prod.setText(rs.getString("desc_max_prod"));
+                preco_venda_prod.setText(rs.getString("preco_venda_prod"));
+                preco_custo_prod.setText(rs.getString("preco_custo_prod"));
+                categoria_prod.setText(rs.getString("categoria_prod"));
+                marca_prod.setText(rs.getString("marca_prod"));
+                estoque_prod.setText(rs.getString("estoque_prod"));
+                unidade_prod.setSelectedItem(rs.getString("unidade_prod"));
+                validade_prod.setText(rs.getString("validade_prod"));
+                fornecedor_prod.setText(rs.getString("fornecedor_prod"));
+                localizacao_prod.setText(rs.getString("localizacao_prod"));
+
+                gravar_alterar = 2; // Modo alteração
+                liberarCampos(true);
+            }
+        } catch (Exception e) {
+            System.out.println("Erro SQL! " + e);
+        } finally {
+            produtoCTR.CloseDB();
+        }
+    }
+
+    private void alterar() {
+        try {
+            // Populando o DTO com os dados atuais da tela
+            produtoDTO.setNome_prod(nome_prod.getText());
+            produtoDTO.setDesc_max_prod(Double.parseDouble(desc_max_prod.getText()));
+            produtoDTO.setPreco_venda_prod(Double.parseDouble(preco_venda_prod.getText()));
+            produtoDTO.setPreco_custo_prod(Double.parseDouble(preco_custo_prod.getText()));
+            produtoDTO.setCategoria_prod(categoria_prod.getText());
+            produtoDTO.setMarca_prod(marca_prod.getText());
+            produtoDTO.setEstoque_prod(Integer.parseInt(estoque_prod.getText()));
+            produtoDTO.setUnidade_prod(unidade_prod.getSelectedItem().toString());
+            produtoDTO.setValidade_prod(validade_prod.getText());
+            produtoDTO.setFornecedor_prod(fornecedor_prod.getText());
+            produtoDTO.setLocalizacao_prod(localizacao_prod.getText());
+
+            // Chama a CTR para realizar a alteração no banco
+            JOptionPane.showMessageDialog(null, produtoCTR.alterarProduto(produtoDTO));
+        } catch (Exception e) {
+            System.out.println("Erro ao alterar: " + e.getMessage());
+        }
+    }
+
+    private void excluir() {
+        if (JOptionPane.showConfirmDialog(null, "Deseja excluir o produto?", "AVISO!",
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            JOptionPane.showMessageDialog(null, produtoCTR.excluirProduto(produtoDTO));
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnNovo;
+    private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JTextField categoria_prod;
     private javax.swing.JTextField desc_max_prod;
     private javax.swing.JTextField estoque_prod;
     private javax.swing.JTextField fornecedor_prod;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -520,11 +663,11 @@ public class ProdutoVIEW extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable jtl_consultar_produto;
     private javax.swing.JTextField localizacao_prod;
     private javax.swing.JTextField marca_prod;
     private javax.swing.JTextField nome_prod;
+    private javax.swing.JTextField pesquisa_nome;
     private javax.swing.JPanel pnlBotoes;
     private javax.swing.JPanel pnlBusca;
     private javax.swing.JPanel pnlDados;
