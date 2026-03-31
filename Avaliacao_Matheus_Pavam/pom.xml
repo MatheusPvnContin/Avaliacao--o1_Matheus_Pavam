@@ -34,6 +34,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>21</maven.compiler.release>
-        <exec.mainClass>com.mycompany.avaliacao_matheus_pavam.Avaliacao_Matheus_Pavam</exec.mainClass>
+        <exec.mainClass>br.com.avaliacao1.view.PrincipalVIEW</exec.mainClass>
     </properties>
 </project>
