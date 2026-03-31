@@ -85,10 +85,28 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void abreProdutoVIEW() {
-    ProdutoVIEW produtoVIEW = new ProdutoVIEW();
-    jDesktopPane1.add(produtoVIEW); // Certifique-se que o nome da variavel eh jDesktopPane1
-    produtoVIEW.setVisible(true);
-    produtoVIEW.setPosicao();
+    // 1. Verifica se a tela já está aberta dentro do DesktopPane
+    boolean aberta = false;
+    for (javax.swing.JInternalFrame frame : jDesktopPane1.getAllFrames()) {
+        if (frame instanceof ProdutoVIEW) {
+            aberta = true;
+            frame.moveToFront(); // Traz a tela para frente caso esteja escondida
+            try {
+                frame.setSelected(true); // Coloca o foco (cursor) nela
+            } catch (java.beans.PropertyVetoException e) {
+                System.out.println("Erro ao dar foco na tela: " + e.getMessage());
+            }
+            break; // Já encontramos a tela, não precisa continuar o loop
+        }
+    }
+
+    // 2. Se a tela não foi encontrada aberta, aí sim criamos uma nova
+    if (!aberta) {
+        ProdutoVIEW produtoVIEW = new ProdutoVIEW();
+        jDesktopPane1.add(produtoVIEW);
+        produtoVIEW.setVisible(true);
+        produtoVIEW.setPosicao();
+    }
 }
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed

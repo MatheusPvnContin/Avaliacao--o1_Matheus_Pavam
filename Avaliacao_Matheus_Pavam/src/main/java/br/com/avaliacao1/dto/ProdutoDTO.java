@@ -33,8 +33,8 @@ public class ProdutoDTO {
     public String getMarca_prod() { return marca_prod; }
     public void setMarca_prod(String marca_prod) { this.marca_prod = marca_prod; }
 
-    public int getEstoque_prod() { return estoque_prod; }
-    public void setEstoque_prod(int estoque_prod) { this.estoque_prod = estoque_prod; }
+    public int getQuantidade_prod() { return estoque_prod; }
+    public void setQuantidade_prod(int estoque_prod) { this.estoque_prod = estoque_prod; }
 
     public String getUnidade_prod() { return unidade_prod; }
     public void setUnidade_prod(String unidade_prod) { this.unidade_prod = unidade_prod; }

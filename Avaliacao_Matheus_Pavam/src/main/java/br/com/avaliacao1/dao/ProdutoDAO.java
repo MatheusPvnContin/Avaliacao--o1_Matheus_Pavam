@@ -17,7 +17,7 @@ public class ProdutoDAO {
             stmt = ConexaoDAO.con.createStatement();
 
             String comando = "Insert into Produto (nome_prod, desc_max_prod, preco_venda_prod, "
-                    + "preco_custo_prod, categoria_prod, marca_prod, estoque_prod, "
+                    + "preco_custo_prod, categoria_prod, marca_prod, quantidade_prod, "
                     + "unidade_prod, validade_prod, fornecedor_prod, localizacao_prod) values ("
                     + "'" + produtoDTO.getNome_prod() + "', "
                     + produtoDTO.getDesc_max_prod() + ", "
@@ -25,7 +25,7 @@ public class ProdutoDAO {
                     + produtoDTO.getPreco_custo_prod() + ", "
                     + "'" + produtoDTO.getCategoria_prod() + "', "
                     + "'" + produtoDTO.getMarca_prod() + "', "
-                    + produtoDTO.getEstoque_prod() + ", "
+                    + produtoDTO.getQuantidade_prod()+ ", "
                     + "'" + produtoDTO.getUnidade_prod() + "', "
                     + "'" + produtoDTO.getValidade_prod() + "', "
                     + "'" + produtoDTO.getFornecedor_prod() + "', "
@@ -79,7 +79,7 @@ public boolean alterarProduto(ProdutoDTO produtoDTO) {
                 + "preco_custo_prod = " + produtoDTO.getPreco_custo_prod() + ", "
                 + "categoria_prod = '" + produtoDTO.getCategoria_prod() + "', "
                 + "marca_prod = '" + produtoDTO.getMarca_prod() + "', "
-                + "estoque_prod = " + produtoDTO.getEstoque_prod() + ", "
+                + "quantidade_prod = " + produtoDTO.getQuantidade_prod() + ", "
                 + "unidade_prod = '" + produtoDTO.getUnidade_prod() + "', "
                 + "validade_prod = '" + produtoDTO.getValidade_prod() + "', "
                 + "fornecedor_prod = '" + produtoDTO.getFornecedor_prod() + "', "
@@ -96,6 +96,8 @@ public boolean alterarProduto(ProdutoDTO produtoDTO) {
     } finally {
         ConexaoDAO.CloseDB();
     }
+    
+    
 }
 
 public boolean excluirProduto(ProdutoDTO produtoDTO) {
